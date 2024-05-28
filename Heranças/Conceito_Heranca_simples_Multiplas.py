@@ -1,6 +1,7 @@
 # Herança Simples, quando uma classe filha, herda apenas uma classe Pai
 
 # Herança Multipla, quando uma classe filha, herda de varias classes pai
+# Ou ex. Classe avo, as classes pai herdam das classes avos e as classes filhas das classes pai
 
 # Sintaxe Herança simples
 
