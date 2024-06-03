@@ -1,0 +1,185 @@
+#Manipular arquivos em Python é uma tarefa comum e essencial para muitas aplicações.  fornece diversas funções e bibliotecas para trabalhar com arquivos de diferentes tipos. Aqui estão algumas operações básicas e exemplos de como manipulá-los.
+#Leitura e Escrita de Arquivos de Texto
+#Abrir e Fechar Arquivos
+
+
+
+# Abre um arquivo para leitura
+arquivo = open('exemplo.txt', 'r')
+# Lê o conteúdo do arquivo
+conteudo = arquivo.read()
+print(conteudo)
+# Fecha o arquivo
+arquivo.close()
+
+#Usando o Context Manager (with)
+
+
+
+# Usando 'with' para abrir e ler um arquivo
+with open('exemplo.txt', 'r') as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
+# O arquivo é automaticamente fechado após o bloco 'with'
+
+#Escrita em Arquivos
+
+
+
+# Abre um arquivo para escrita (cria o arquivo se não existir)
+with open('exemplo.txt', 'w') as arquivo:
+    arquivo.write('Olá, Mundo!\n')
+    arquivo.write('Mais uma linha de texto.\n')
+
+#Acrescentar Conteúdo ao Arquivo
+
+
+
+# Abre um arquivo para acrescentar (append)
+with open('exemplo.txt', 'a') as arquivo:
+    arquivo.write('Linha adicionada.\n')
+
+#Leitura e Escrita de Arquivos CSV
+#Usando a Biblioteca csv
+
+
+
+import csv
+
+# Escrevendo em um arquivo CSV
+with open('dados.csv', 'w', newline='') as csvfile:
+    escritor = csv.writer(csvfile)
+    escritor.writerow(['Nome', 'Idade', 'Cidade'])
+    escritor.writerow(['Alice', 30, 'São Paulo'])
+    escritor.writerow(['Bob', 25, 'Rio de Janeiro'])
+
+# Lendo de um arquivo CSV
+with open('dados.csv', 'r') as csvfile:
+    leitor = csv.reader(csvfile)
+    for linha in leitor:
+        print(linha)
+
+#Manipulação de Arquivos JSON
+#Usando a Biblioteca json
+
+
+
+import json
+
+# Dados a serem escritos no arquivo JSON
+dados = {
+    'nome': 'Alice',
+    'idade': 30,
+    'cidade': 'São Paulo'
+}
+
+# Escrevendo em um arquivo JSON
+with open('dados.json', 'w') as jsonfile:
+    json.dump(dados, jsonfile, indent=4)
+
+# Lendo de um arquivo JSON
+with open('dados.json', 'r') as jsonfile:
+    dados_carregados = json.load(jsonfile)
+    print(dados_carregados)
+
+#Manipulação de Arquivos Binários
+#Leitura e Escrita de Arquivos Binários
+
+
+
+# Escrevendo em um arquivo binário
+with open('imagem.jpg', 'rb') as img:
+    conteudo = img.read()
+
+with open('copia_imagem.jpg', 'wb') as img_copia:
+    img_copia.write(conteudo)
+
+   # 1. Usando a função open e close
+#Exemplo de Leitura de Arquivo
+
+
+
+# Abrir um arquivo para leitura
+arquivo = open('exemplo.txt', 'r')
+
+# Ler o conteúdo do arquivo
+conteudo = arquivo.read()
+print(conteudo)
+
+# Fechar o arquivo
+arquivo.close()
+
+#Exemplo de Escrita em Arquivo
+
+
+
+# Abrir um arquivo para escrita (isso criará o arquivo se ele não existir)
+arquivo = open('exemplo.txt', 'w')
+
+# Escrever no arquivo
+arquivo.write('Olá, Mundo!\n')
+arquivo.write('Mais uma linha de texto.\n')
+
+# Fechar o arquivo
+arquivo.close()
+
+#2. Usando o Context Manager (with)
+
+#O uso do with é a maneira recomendada para abrir e fechar arquivos em . Ele garante que o arquivo será fechado automaticamente após o bloco de código ser executado, mesmo que ocorra uma exceção.
+#Exemplo de Leitura de Arquivo com with
+
+
+
+# Usando 'with' para abrir e ler um arquivo
+with open('exemplo.txt', 'r') as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
+# O arquivo é automaticamente fechado após o bloco 'with'
+
+#Exemplo de Escrita em Arquivo com with
+
+
+
+# Usando 'with' para abrir e escrever em um arquivo
+with open('exemplo.txt', 'w') as arquivo:
+    arquivo.write('Olá, Mundo!\n')
+    arquivo.write('Mais uma linha de texto.\n')
+# O arquivo é automaticamente fechado após o bloco 'with'
+
+#3. Modos de Abertura de Arquivo
+
+#Os arquivos podem ser abertos em diferentes modos, dependendo da operação que você deseja realizar:
+
+ #   'r' : leitura (padrão)
+  #  'w' : escrita (substitui o arquivo se já existir)
+   # 'a' : anexar (escreve no final do arquivo sem apagar o conteúdo existente)
+    #'b' : modo binário (usado com outros modos, por exemplo, 'rb' ou 'wb')
+    #'+' : leitura e escrita (usado com outros modos, por exemplo, 'r+' ou 'w+')
+
+#Exemplos de Diferentes Modos de Abertura
+#Leitura em Modo Binário
+
+
+
+with open('imagem.jpg', 'rb') as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
+
+#Escrita em Modo Binário
+
+
+
+with open('imagem_copia.jpg', 'wb') as arquivo:
+    arquivo.write(conteudo)
+
+#Leitura e Escrita
+
+
+
+# Abre para leitura e escrita, sem truncar o arquivo
+with open('exemplo.txt', 'r+') as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
+    arquivo.write('Adicionando uma linha.\n')
+
+#Esses são os métodos básicos para abrir e fechar arquivos em . O uso de with é especialmente útil para garantir que os arquivos sejam fechados corretamente e evitar vazamentos de recursos.

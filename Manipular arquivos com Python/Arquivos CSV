@@ -1,0 +1,83 @@
+#CSV (Comma-Separated Values) é um formato de arquivo usado para armazenar dados tabulares, como uma planilha ou banco de dados, em texto simples. Cada linha do arquivo representa um registro, e cada registro consiste em campos separados por vírgulas. Os arquivos CSV são amplamente utilizados devido à sua simplicidade e compatibilidade com muitos aplicativos e linguagens de programação.
+#Estrutura de um Arquivo CSV
+
+#Um arquivo CSV típico se parece com isso:
+
+csv
+
+# Nome,Idade,Cidade
+# Alice,30,São Paulo
+# Bob,25,Rio de Janeiro
+# Carlos,22,Brasília
+
+#    Cabeçalho: A primeira linha pode conter os nomes das colunas (opcional).
+#    Registros: Cada linha subsequente representa um registro com valores separados por vírgulas.
+
+#Vantagens do CSV
+
+#    Simplicidade: Fácil de criar e ler manualmente.
+#    Compatibilidade: Suportado por muitas aplicações, incluindo programas de planilhas como Microsoft Excel e Google Sheets.
+#    Portabilidade: Fácil de transportar e compartilhar entre diferentes sistemas e plataformas.
+
+#Desvantagens do CSV
+
+#    Formato Simples: Não adequado para dados complexos ou com estrutura hierárquica.
+#    Falta de Padronização: Não há um padrão rigoroso, e variações podem surgir, como o uso de outros delimitadores (ponto e vírgula, tabulações) ou diferentes codificações de caracteres.
+#    Ausência de Metadados: Não há informações sobre tipos de dados ou validação de campos.
+
+#Manipulação de Arquivos CSV em 
+
+# possui a biblioteca csv para facilitar a leitura e escrita de arquivos CSV. Aqui estão alguns exemplos de como usar essa biblioteca:
+#Leitura de Arquivos CSV
+
+
+
+import csv
+
+# Lendo um arquivo CSV
+with open('dados.csv', 'r') as csvfile:
+    leitor = csv.reader(csvfile)
+    for linha in leitor:
+        print(linha)
+
+#Escrita em Arquivos CSV
+
+
+
+import csv
+
+# Escrevendo em um arquivo CSV
+with open('dados.csv', 'w', newline='') as csvfile:
+    escritor = csv.writer(csvfile)
+    escritor.writerow(['Nome', 'Idade', 'Cidade'])
+    escritor.writerow(['Alice', 30, 'São Paulo'])
+    escritor.writerow(['Bob', 25, 'Rio de Janeiro'])
+
+#Leitura de Arquivos CSV com DictReader
+
+
+
+import csv
+
+# Lendo um arquivo CSV usando DictReader
+with open('dados.csv', 'r') as csvfile:
+    leitor = csv.DictReader(csvfile)
+    for linha in leitor:
+        print(linha)
+
+#Escrita em Arquivos CSV com DictWriter
+
+
+
+import csv
+
+# Escrevendo em um arquivo CSV usando DictWriter
+with open('dados.csv', 'w', newline='') as csvfile:
+    colunas = ['Nome', 'Idade', 'Cidade']
+    escritor = csv.DictWriter(csvfile, fieldnames=colunas)
+    
+    escritor.writeheader()
+    escritor.writerow({'Nome': 'Alice', 'Idade': 30, 'Cidade': 'São Paulo'})
+    escritor.writerow({'Nome': 'Bob', 'Idade': 25, 'Cidade': 'Rio de Janeiro'})
+
+#Esses exemplos mostram como manipular arquivos CSV de forma eficiente em , aproveitando a simplicidade e a versatilidade desse formato.
